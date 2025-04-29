@@ -136,6 +136,18 @@ int main(int argc, char const *argv[])
                 printf("\n\nDia %d - Número de infectados: %d %s", dia, init_infectadas, evt.descricao);
             }
 
+            // Após a simulação, calcula e exibe os resultados finais:
+            int total_infectados = init_infectadas;
+            int total_vacinados = (int)(populacao_total * populacao_vacinada / 100.0);
+            int nao_vacinadas = populacao_total - total_vacinados;
+            int vacinados_infectados = (total_infectados > nao_vacinadas) ? total_infectados - nao_vacinadas : 0;
+            int populacao_saudavel = populacao_total - total_infectados;
+
+            printf("\n\nTotal infectados: %d\n", total_infectados);
+            printf("População vacinada: %d\n", total_vacinados);
+            printf("Vacinados infectados: %d\n", vacinados_infectados);
+            printf("População saudável: %d\n", populacao_saudavel);
+
             break;
         
         case '2':
